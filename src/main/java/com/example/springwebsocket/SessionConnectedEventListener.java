@@ -15,7 +15,7 @@ public class SessionConnectedEventListener implements ApplicationListener<Sessio
 
 	@Override
 	public void onApplicationEvent(SessionConnectedEvent event) {
-		System.out.println("Connected " + event.getMessage().getHeaders().get("simpSessionId"));
+		System.out.println("Connected " + event.getMessage().getHeaders().get("simpSessionId") + " " + event.getUser().getName());
 		webSocketSessionService
 				.sendMessage("connected " + event.getMessage().getHeaders().get("simpSessionId").toString());
 	}

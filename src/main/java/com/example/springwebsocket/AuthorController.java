@@ -30,5 +30,14 @@ public class AuthorController {
 		webservice.sendPrivateMessage(sessionId + "#" + message, sessionId);
 		return message;
 	}
+	
+	@GetMapping("/app/user/{userid}/{message}")
+	@MessageMapping("/userhello")
+	public String getUserMessage(@Payload @PathVariable("message") String message, 
+			 @Header("simpSessionId") String sessionId) {
+		System.out.println("Sending user message" + sessionId);
+		webservice.sendUserMessage(sessionId + "#" + message);
+		return message;
+	}
 
 }

@@ -30,4 +30,11 @@ public class WebsocketserviceImpl implements Websocketservice {
 		return headerAccessor.getMessageHeaders();
 	}
 
+	@Override
+	public void sendUserMessage(String message) {
+		template.convertAndSend("/queue/chats-" + "test", message);
+
+		
+	}
+
 }
